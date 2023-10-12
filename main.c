@@ -1,6 +1,6 @@
 //
 //  main.c
-//  06_P2 함수의 동작 관찰
+//  06_P3 여러가지 함수 구현
 //
 //  Created by ok sojoung on 2023/10/12.
 //
@@ -8,20 +8,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void func1(void){
-    int x;
-    printf("func1 x is at %p\n", &x);   // &x는 메모리의 주소(하드웨어, 노트북 시스템에 따라 다름)
+int sumTwo(int a, int b)
+{
+    return a+b;
 }
 
-int main(void){
-    int x;
-    printf("main  x is at %p\n", &x);
-    func1();
+
+int square(int n)
+{
+    return n*n;
+
+}
+
+
+int get_max(int x, int y)
+{
+    if(x>y)
+        return x;
+    else            // 이거 빼도됨. x 반환되면 끝이여서
+        return y;
+}
+
+int main(void)
+{
+    int a, b;       // a,b 말고 다른 걸로 선언해도 됨
+    a = 3; b = 10;
+    printf("sumTwo result: %i\n", sumTwo(a,b) );
     
-    /*  메모리 주소(&x)가 서로 다르게 나옴
-        이름이 같아도 서로 다른 함수의 변수는 다른 변수다. 즉, x는 서로 다른거임.
-        main함수의 메모리 영역이 더 높은 값임. 제일 먼저 부르는 함수가 제일 밑에(번지수 큼).
-        func함수의 메모리 번지수가 더 작음.
-    */
+    int n = 3;
+    printf("square result: %i\n", square(n));
+    
+    int x, y;
+    x = 10; y = 8;
+    printf("get_max result: %i\n", get_max(x,y));
+    
     return 0;
 }

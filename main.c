@@ -1,6 +1,6 @@
 //
 //  main.c
-//  06_P3 여러가지 함수 구현
+//  06_P4 Call by value
 //
 //  Created by ok sojoung on 2023/10/12.
 //
@@ -8,39 +8,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sumTwo(int a, int b)
+/*
+void square(int a)
 {
-    return a+b;
-}
-
-
-int square(int n)
-{
-    return n*n;
-
-}
-
-
-int get_max(int x, int y)
-{
-    if(x>y)
-        return x;
-    else            // 이거 빼도됨. x 반환되면 끝이여서
-        return y;
+    a = a*a;                    // square(2)=4가 나옴.
 }
 
 int main(void)
 {
-    int a, b;       // a,b 말고 다른 걸로 선언해도 됨
-    a = 3; b = 10;
-    printf("sumTwo result: %i\n", sumTwo(a,b) );
-    
-    int n = 3;
-    printf("square result: %i\n", square(n));
-    
-    int x, y;
-    x = 10; y = 8;
-    printf("get_max result: %i\n", get_max(x,y));
-    
-    return 0;
+    int a = 2;                  //스텍에 제일 아래에 main(a=2)이 먼저 오고 그 위에 스텍영역에 계산된 4값이있음.
+    square(a);
+    printf("a = %i\n",a);       // 결과가 2로 나옴.
+}
+*/
+
+int square(int a)
+{
+    return (a*a);               // 함수의 결과를 쓰고 싶을 땐 무조건 return 사용!!
+}
+
+int main(void)
+{
+    int a=2;                    // 스텍 제일 아래부분에 2가 들어가있음.
+    a = square(a);              // 그 위에 2가 들어가서 a=4가 됨.
+    printf("a = %i\n", a);
 }
